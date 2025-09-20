@@ -1,1 +1,0 @@
-DJ KripStar portfolio site
