@@ -29,18 +29,11 @@
                 }, false);
             }
         }</script><script>document.addEventListener('DOMContentLoaded', function() {
-  // Grab the hero header element
   const heroHeader = document.querySelector('.hero__header');
-
-  if (heroHeader) {
-    // Grab the hero text from a hidden element or a data attribute
-    // For Publii Tattoo theme, the hero text is in the config as {{{@config.custom.textHero}}}
-    // We'll assume it's rendered in a hidden div for JS to pick up:
-
-    const heroTextSource = document.querySelector('#heroTextSource');
-    if (heroTextSource) {
-      heroHeader.innerHTML = heroTextSource.innerHTML;
-    }
+  const heroTextSource = document.querySelector('#heroTextSource');
+  
+  if(heroHeader && heroTextSource) {
+    heroHeader.innerHTML = heroTextSource.innerHTML;
   }
 });</script><script type="module">import PhotoSwipeLightbox from 'https://mark-dj-eng.github.io/media/plugins/coreLightboxGallery/photoswipe-lightbox.esm.min.js';
 				 const galleries = document.querySelectorAll('.gallery');
