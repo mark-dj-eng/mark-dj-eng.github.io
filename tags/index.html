@@ -56,26 +56,26 @@
 });</script><script>document.addEventListener("DOMContentLoaded", function() {
   const player = document.getElementById("sampler-player");
   const title = document.getElementById("sampler-title");
-  const art = document.getElementById("sampler-artwork");
+  const artwork = document.getElementById("sampler-artwork");
   const items = document.querySelectorAll(".sampler-item");
 
   items.forEach(item => {
-    item.addEventListener("click", () => {
-      // Update source
-      const newSrc = item.getAttribute("data-src");
-      const newTitle = item.getAttribute("data-title");
-      const newArt = item.getAttribute("data-art");
+    item.addEventListener("click", function() {
+      const src = this.getAttribute("data-src");
+      const art = this.getAttribute("data-art");
+      const name = this.getAttribute("data-title");
 
-      player.src = newSrc;
-      title.textContent = newTitle;
-      art.src = newArt;
+      // Update player and artwork
+      player.src = src;
+      title.textContent = name;
+      artwork.src = art;
 
-      // Highlight active
-      items.forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-
-      // Play new track
+      // Play automatically
       player.play();
+
+      // Optional: visual active state
+      items.forEach(i => i.classList.remove("active"));
+      this.classList.add("active");
     });
   });
 });</script></body></html>
