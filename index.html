@@ -64,18 +64,18 @@
     showSlide(current);
   });
 
-  // Swipe detection for touch devices
+  // Swipe detection for touch devices (mobile-friendly)
   let startX = 0;
   let endX = 0;
 
   const sliderContainer = document.querySelector('.testimonial-slider');
   sliderContainer.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
-  });
+  }, { passive: true });
 
   sliderContainer.addEventListener('touchmove', (e) => {
     endX = e.touches[0].clientX;
-  });
+  }, { passive: true });
 
   sliderContainer.addEventListener('touchend', () => {
     const diffX = startX - endX;
