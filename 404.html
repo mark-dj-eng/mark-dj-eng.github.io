@@ -34,7 +34,20 @@
   body.style.height = 'auto';
   body.style.maxHeight = 'none';
   body.style.touchAction = 'pan-y';
-});</script><script>document.addEventListener("DOMContentLoaded", function() {
+});</script><script>window.addEventListener('scroll', function(e) {
+  // Prevent Tattoo theme from hijacking scroll
+  const body = document.body;
+  const html = document.documentElement;
+
+  if (body.style.position !== 'static') {
+    body.style.position = 'static';
+  }
+  if (html.style.position !== 'static') {
+    html.style.position = 'static';
+  }
+  body.style.overflow = 'auto';
+  html.style.overflow = 'auto';
+}, { passive: true });</script><script>document.addEventListener("DOMContentLoaded", function() {
     const heroHeader = document.querySelector(".hero__header");
 
     if (heroHeader) {
