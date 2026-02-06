@@ -29,6 +29,23 @@
                 }, false);
             }
         }</script><script>document.addEventListener("DOMContentLoaded", function() {
+  // Disable Tattoo theme scroll-lock on body/html
+  const body = document.body;
+  const html = document.documentElement;
+
+  // Ensure body/html are scrollable
+  html.style.overflow = 'auto';
+  html.style.position = 'static';
+  html.style.height = 'auto';
+  html.style.maxHeight = 'none';
+  html.style.touchAction = 'pan-y';
+
+  body.style.overflow = 'auto';
+  body.style.position = 'static';
+  body.style.height = 'auto';
+  body.style.maxHeight = 'none';
+  body.style.touchAction = 'pan-y';
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
     const heroHeader = document.querySelector(".hero__header");
 
     if (heroHeader) {
