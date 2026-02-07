@@ -119,33 +119,4 @@
     document.getElementById(tabId).classList.add('active');
     button.classList.add('active');
   });
-});</script><script>document.addEventListener("DOMContentLoaded", function() {
-    let newScrollPosition = 0;
-    let lastScrollPosition;
-    const header = document.getElementById("js-top");
-
-    window.addEventListener('scroll', () => {
-        lastScrollPosition = window.scrollY;
-
-        // Wrap DOM updates in requestAnimationFrame for smooth scroll
-        window.requestAnimationFrame(() => {
-            if (!header) return;
-
-            // Scrolling down
-            if (newScrollPosition < lastScrollPosition && lastScrollPosition > 184) {
-                header.classList.remove("is-visible");
-                header.classList.add("is-hidden");
-            // Scrolling up
-            } else if (newScrollPosition > lastScrollPosition) {
-                header.classList.remove("is-hidden");
-                header.classList.add("is-visible");
-            }
-
-            if (lastScrollPosition < 184) {
-                header.classList.remove("is-visible");
-            }
-
-            newScrollPosition = lastScrollPosition;
-        });
-    });
 });</script></body></html>
