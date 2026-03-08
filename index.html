@@ -28,32 +28,7 @@
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script><script>document.addEventListener("DOMContentLoaded", function() {
-  const player = document.getElementById("sampler-player");
-  const title = document.getElementById("sampler-title");
-  const artwork = document.getElementById("sampler-artwork");
-  const items = document.querySelectorAll(".sampler-item");
-
-  items.forEach(item => {
-    item.addEventListener("click", function() {
-      const src = this.getAttribute("data-src");
-      const art = this.getAttribute("data-art");
-      const name = this.getAttribute("data-title");
-
-      // Update player and artwork
-      player.src = src;
-      title.textContent = name;
-      artwork.src = art;
-
-      // Play automatically
-      player.play();
-
-      // Optional: visual active state
-      items.forEach(i => i.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
-});</script><script>document.querySelectorAll('.flyers-tabs .tab-link').forEach(button => {
+        }</script><script>document.querySelectorAll('.flyers-tabs .tab-link').forEach(button => {
   button.addEventListener('click', () => {
     const tabId = button.getAttribute('data-tab');
 
