@@ -130,7 +130,93 @@
     document.getElementById(tabId).classList.add('active');
     button.classList.add('active');
   });
-});</script><script type="module">import PhotoSwipeLightbox from 'https://djkripstar.co.uk/media/plugins/coreLightboxGallery/photoswipe-lightbox.esm.min.js';
+});</script><script>(function () {
+  const isProblemDevice =
+    /Android/i.test(navigator.userAgent) &&
+    window.matchMedia("(pointer: coarse)").matches;
+
+  if (!isProblemDevice) return;
+
+  let startX = 0;
+  let startY = 0;
+  let lastY = 0;
+  let active = false;
+  let ticking = false;
+  let pendingDelta = 0;
+
+  function ignoreTarget(el) {
+    return !!el.closest(
+      'input, textarea, select, button, label, audio, video, iframe, .testimonial-slider, .flyers-tabs'
+    );
+  }
+
+  function applyScroll() {
+    if (pendingDelta !== 0) {
+      window.scrollBy(0, pendingDelta);
+      pendingDelta = 0;
+    }
+    ticking = false;
+  }
+
+  document.addEventListener(
+    "touchstart",
+    function (e) {
+      if (e.touches.length !== 1) return;
+      if (ignoreTarget(e.target)) {
+        active = false;
+        return;
+      }
+
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      lastY = t.clientY;
+      pendingDelta = 0;
+      active = true;
+    },
+    { passive: true, capture: true }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    function (e) {
+      if (!active || e.touches.length !== 1) return;
+
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+
+      if (Math.abs(dy) > Math.abs(dx)) {
+        pendingDelta += lastY - t.clientY;
+        lastY = t.clientY;
+
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(applyScroll);
+        }
+      }
+    },
+    { passive: true, capture: true }
+  );
+
+  document.addEventListener(
+    "touchend",
+    function () {
+      active = false;
+      pendingDelta = 0;
+    },
+    { passive: true, capture: true }
+  );
+
+  document.addEventListener(
+    "touchcancel",
+    function () {
+      active = false;
+      pendingDelta = 0;
+    },
+    { passive: true, capture: true }
+  );
+})();</script><script type="module">import PhotoSwipeLightbox from 'https://djkripstar.co.uk/media/plugins/coreLightboxGallery/photoswipe-lightbox.esm.min.js';
 				 const galleries = document.querySelectorAll('.gallery');
 				 galleries.forEach(gallery => {
 					  const lightbox = new PhotoSwipeLightbox({
