@@ -17,16 +17,4 @@
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script><script>document.querySelectorAll('.flyers-tabs .tab-link').forEach(button => {
-  button.addEventListener('click', () => {
-    const tabId = button.getAttribute('data-tab');
-
-    // deactivate all tabs and buttons
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.flyers-tabs .tab-link').forEach(btn => btn.classList.remove('active'));
-
-    // activate selected tab and button
-    document.getElementById(tabId).classList.add('active');
-    button.classList.add('active');
-  });
-});</script></body></html>
+        }</script></body></html>
